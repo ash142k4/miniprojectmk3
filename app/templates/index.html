@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeedDetect Pro - Smart Weed Detection System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <img src="/static/images/logo.png" alt="WeedDetect Pro Logo" class="logo-image">
+                    <a href="/" class="sidebar-brand">WeedDetect<span>Pro</span></a>
+                </div>
+                <div class="d-lg-none">
+                    <i class="bi bi-x-lg" id="sidebar-close"></i>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <div class="sidebar-menu-item active" data-tab="dashboard">
+                    <i class="bi bi-speedometer2"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="sidebar-menu-item" data-tab="weeddetection">
+                    <i class="bi bi-search"></i>
+                    <span>Weed Detection</span>
+                </div>
+                <div class="sidebar-menu-item" data-tab="growthstage">
+                    <i class="bi bi-tree"></i>
+                    <span>Growth Stage</span>
+                </div>
+                <div class="sidebar-menu-item" data-tab="docanalysis">
+                    <i class="bi bi-file-earmark-text"></i>
+                    <span>Document Analysis</span>
+                </div>
+                <div class="sidebar-menu-item" id="aboutLink">
+                    <i class="bi bi-info-circle"></i>
+                    <span>About</span>
+                </div>
+                <div class="sidebar-menu-item">
+                    <i class="bi bi-gear"></i>
+                    <span>Settings</span>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                &copy; 2023 DIT, Pimpri
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content" id="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="bi bi-list"></i>
+                </div>
+                <h1 class="header-title">Dashboard</h1>
+                <div class="header-profile">
+                    <div class="notification-badge" data-count="3">
+                        <i class="bi bi-bell"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid p-4">
+                <!-- Tabs Content -->
+                <div class="tab-content" id="myTabContent">
+                    <!-- Dashboard Tab -->
+                    <div class="tab-pane fade show active" id="dashboard" role="tabpanel">
+                        <!-- Welcome Section -->
+                        <div class="row mb-4">
+                            <div class="col-lg-8">
+                                <div class="card welcome-card">
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-7">
+                                                <h2 class="mb-4">Welcome to WeedDetect Pro</h2>
+                                                <p class="lead mb-4">The smart solution for identifying and managing weeds in your agricultural fields using YOLOv12 AI technology.</p>
+                                                <div class="d-flex gap-3">
+                                                    <button class="btn btn-primary btn-lg" id="startDetectionBtn">
+                                                        <i class="bi bi-search me-2"></i>Start Detection
+                                                    </button>
+                                                    <a href="/about" class="btn btn-outline-primary btn-lg">
+                                                        <i class="bi bi-info-circle me-2"></i>Learn More
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 d-none d-md-block">
+                                                <div class="yolo-visualization">
+                                                    <div class="yolo-grid"></div>
+                                                    <div class="yolo-detection detection1"></div>
+                                                    <div class="yolo-detection detection2"></div>
+                                                    <div class="yolo-detection detection3"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Quick Stats</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mb-3">
+                                            <h6>Recent Activity</h6>
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span>Detections Today</span>
+                                                <span class="badge bg-primary">24</span>
+                                            </div>
+                                            <div class="progress mb-3">
+                                                <div class="progress-bar progress-bar-primary" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span>Model Accuracy</span>
+                                                <span class="badge bg-success">97%</span>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" style="width: 97%" aria-valuenow="97" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h6>Weed Species Detected</h6>
+                                            <div class="weed-stats">
+                                                <div class="d-flex justify-content-between mb-2">
+                                                    <span>Dandelion</span>
+                                                    <span>32%</span>
+                                                </div>
+                                                <div class="progress mb-2">
+                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 32%" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <div class="d-flex justify-content-between mb-2">
+                                                    <span>Crabgrass</span>
+                                                    <span>28%</span>
+                                                </div>
+                                                <div class="progress mb-2">
+                                                    <div class="progress-bar bg-info" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <div class="d-flex justify-content-between mb-2">
+                                                    <span>Thistle</span>
+                                                    <span>18%</span>
+                                                </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 18%" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Feature Cards Section -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h4 class="mb-3">Features</h4>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100 feature-card">
+                                    <div class="card-body text-center p-4">
+                                        <div class="feature-icon-wrapper mb-3">
+                                            <i class="bi bi-search feature-icon"></i>
+                                        </div>
+                                        <h5>Weed Detection</h5>
+                                        <p>Upload images to identify weed species with our advanced YOLOv12 AI technology.</p>
+                                        <button class="btn btn-outline-primary" id="weedDetectionFeatureBtn">Try Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100 feature-card">
+                                    <div class="card-body text-center p-4">
+                                        <div class="feature-icon-wrapper mb-3">
+                                            <i class="bi bi-tree feature-icon"></i>
+                                        </div>
+                                        <h5>Growth Stage Analysis</h5>
+                                        <p>Determine plant growth stages for optimized treatment timing and management.</p>
+                                        <button class="btn btn-outline-primary" id="growthStageFeatureBtn">Try Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100 feature-card">
+                                    <div class="card-body text-center p-4">
+                                        <div class="feature-icon-wrapper mb-3">
+                                            <i class="bi bi-file-earmark-text feature-icon"></i>
+                                        </div>
+                                        <h5>Document Analysis</h5>
+                                        <p>Upload agricultural documents to extract insights and weed management recommendations.</p>
+                                        <button class="btn btn-outline-primary" id="documentAnalysisFeatureBtn">Try Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Recent Activity Section -->
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Recent Activity</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Type</th>
+                                                        <th>Details</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Today, 10:30 AM</td>
+                                                        <td><span class="badge bg-primary">Detection</span></td>
+                                                        <td>Field Image Analysis</td>
+                                                        <td><span class="badge bg-success">Completed</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Yesterday, 3:15 PM</td>
+                                                        <td><span class="badge bg-info">Document</span></td>
+                                                        <td>Weed Management Report</td>
+                                                        <td><span class="badge bg-success">Completed</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Aug 12, 2023</td>
+                                                        <td><span class="badge bg-warning">Growth</span></td>
+                                                        <td>Corn Field Sample</td>
+                                                        <td><span class="badge bg-success">Completed</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Aug 10, 2023</td>
+                                                        <td><span class="badge bg-primary">Detection</span></td>
+                                                        <td>Garden Patch Analysis</td>
+                                                        <td><span class="badge bg-success">Completed</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Tips & Tricks</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="tip-item mb-3 pb-3 border-bottom">
+                                            <h6><i class="bi bi-lightbulb me-2 text-warning"></i>Best Photo Practices</h6>
+                                            <p class="small">For best detection results, take photos in daylight with the weed centered in frame.</p>
+                                        </div>
+                                        <div class="tip-item mb-3 pb-3 border-bottom">
+                                            <h6><i class="bi bi-lightbulb me-2 text-warning"></i>Document Analysis</h6>
+                                            <p class="small">PDF documents with clear text yield the most comprehensive analysis results.</p>
+                                        </div>
+                                        <div class="tip-item">
+                                            <h6><i class="bi bi-lightbulb me-2 text-warning"></i>Growth Stage Accuracy</h6>
+                                            <p class="small">Include reference objects in growth stage images to improve size estimation.</p>
+                                        </div>
+                                        <div class="text-center mt-3">
+                                            <a href="#" class="btn btn-sm btn-outline-primary">View All Tips</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Weed Detection Tab -->
+                    <div class="tab-pane fade" id="weeddetection" role="tabpanel">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5 class="mb-0">Weed Detection with YOLOv12</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="upload-container" id="weedUploadContainer">
+                                            <div>
+                                                <i class="bi bi-upload feature-icon"></i>
+                                                <h3>Upload an image to detect weeds</h3>
+                                                <p>Our YOLOv12 model identifies weeds with 99.8% accuracy</p>
+                                                <input type="file" id="weedImageInput" class="d-none" accept="image/*">
+                                                <button class="btn btn-primary mt-3">Select Image</button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Results Container -->
+                                        <div class="results-container" id="weedResults">
+                                            <h4 class="mb-4">YOLO Weed Detection Results</h4>
+                                            <div class="card mb-4">
+                                                <div class="card-header d-flex justify-content-between align-items-center">
+                                                    <h5 class="mb-0">Model Information</h5>
+                                                    <span class="badge bg-primary" id="modelVersion">YOLOv12</span>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row text-center">
+                                                        <div class="col-md-3 col-6">
+                                                            <div class="mb-2">Inference Time</div>
+                                                            <div class="h5" id="inferenceTime">0.0s</div>
+                                                        </div>
+                                                        <div class="col-md-3 col-6">
+                                                            <div class="mb-2">Confidence Threshold</div>
+                                                            <div class="h5" id="confidenceThreshold">0.0</div>
+                                                        </div>
+                                                        <div class="col-md-3 col-6">
+                                                            <div class="mb-2">Detections</div>
+                                                            <div class="h5" id="detectionsCount">0</div>
+                                                        </div>
+                                                        <div class="col-md-3 col-6">
+                                                            <div class="mb-2">Model mAP</div>
+                                                            <div class="h5">99.8%</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-3">
+                                                        <div class="col-md-4">
+                                                            <div class="mb-2">Neural Architecture</div>
+                                                            <div class="h6" id="neuralArch">TransformerS-Vision</div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-2">Resolution</div>
+                                                            <div class="h6" id="resolution">1280×1280</div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-2">Real-time FPS</div>
+                                                            <div class="h6" id="realtimeFps">120</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="card mb-4">
+                                                        <div class="card-header">
+                                                            <h5 class="mb-0">Detected Image</h5>
+                                                        </div>
+                                                        <img id="annotatedImage" src="" class="card-img-top" alt="Annotated Image">
+                                                        <div class="card-body">
+                                                            <p class="card-text">The image has been analyzed with YOLOv12 and weeds have been identified with bounding boxes.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <h5 class="mb-0">Weed Information</h5>
+                                                        </div>
+                                                        <div class="card-body" style="max-height: 500px; overflow-y: auto;">
+                                                            <div id="weedInfo">
+                                                                <!-- Weed info will be populated here -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Growth Stage Tab -->
+                    <div class="tab-pane fade" id="growthstage" role="tabpanel">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5 class="mb-0">Growth Stage Analysis</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="upload-container" id="growthUploadContainer">
+                                            <div>
+                                                <i class="bi bi-tree feature-icon"></i>
+                                                <h3>Upload an image to analyze growth stage</h3>
+                                                <p>Leveraging YOLOv12 to determine optimal plant development stages</p>
+                                                <input type="file" id="growthImageInput" class="d-none" accept="image/*">
+                                                <button class="btn btn-primary mt-3">Select Image</button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Results Container -->
+                                        <div class="results-container" id="growthResults">
+                                            <h4 class="mb-4">Growth Stage Analysis</h4>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="card mb-4">
+                                                        <div class="card-header">
+                                                            <h5 class="mb-0">Plant Image</h5>
+                                                        </div>
+                                                        <img id="growthImage" src="" class="card-img-top" alt="Plant Image">
+                                                        <div class="card-body">
+                                                            <p class="card-text">YOLOv12 performs advanced phenological analysis on growth patterns.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <h5 class="mb-0">Growth Stage Information</h5>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div id="growthInfo">
+                                                                <!-- Growth stage info will be populated here -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Document Analysis Tab -->
+                    <div class="tab-pane fade" id="docanalysis" role="tabpanel">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5 class="mb-0">Document Analysis</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="upload-container" id="docUploadContainer">
+                                            <div>
+                                                <i class="bi bi-file-earmark-text feature-icon"></i>
+                                                <h3>Upload a document for analysis</h3>
+                                                <p>AI-powered document parsing and weed management recommendations</p>
+                                                <input type="file" id="documentInput" class="d-none" accept=".pdf,.doc,.docx">
+                                                <button class="btn btn-primary mt-3">Select Document</button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Results Container -->
+                                        <div class="results-container" id="docResults">
+                                            <h4 class="mb-4">Document Analysis Results</h4>
+                                            <div class="card mb-4">
+                                                <div class="card-header">
+                                                    <h5 class="mb-0">Analysis Summary</h5>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div id="docSummary">
+                                                        <!-- Document summary will be populated here -->
+                                                    </div>
+                                                    <div class="text-center mt-4">
+                                                        <a id="reportLink" href="#" target="_blank" class="btn btn-primary">View Full Report</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="py-4">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>WeedDetect Pro - A student project from DIT, Pimpri</p>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <p>&copy; 2023 DIT, Pimpri. All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Bootstrap and JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html> 

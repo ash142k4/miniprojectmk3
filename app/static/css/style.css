@@ -1,0 +1,240 @@
+/* Global Styles */
+:root {
+    --primary-color: #4CAF50;
+    --primary-dark: #2E7D32;
+    --primary-light: #A5D6A7;
+    --accent-color: #FFC107;
+    --text-dark: #212121;
+    --text-medium: #666666;
+    --text-light: #FFFFFF;
+    --bg-light: #F5F5F5;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar-brand {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    color: var(--text-light);
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 80px 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('../images/weed-pattern.png');
+    background-size: 200px;
+    background-repeat: repeat;
+}
+
+/* Cards */
+.card {
+    border-radius: var(--border-radius);
+    border: none;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-header {
+    border-top-left-radius: var(--border-radius) !important;
+    border-top-right-radius: var(--border-radius) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Buttons */
+.btn-success {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-success:hover,
+.btn-success:focus {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.btn-outline-success {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-success:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn {
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-lg {
+    padding: 10px 25px;
+}
+
+.rounded-pill {
+    border-radius: 50px !important;
+}
+
+/* Features */
+.feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Form Elements */
+.form-control {
+    border-radius: var(--border-radius);
+    padding: 10px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.25);
+    border-color: var(--primary-light);
+}
+
+/* File Upload Previews */
+.upload-preview img {
+    max-width: 100%;
+}
+
+/* Results Card */
+.weed-item {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    background-color: rgba(76, 175, 80, 0.05);
+    border-left: 4px solid var(--primary-color);
+}
+
+.weed-item:hover {
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.confidence-bar {
+    height: 5px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 4px;
+}
+
+.confidence-value {
+    height: 100%;
+    background-color: var(--primary-color);
+}
+
+/* Document Analysis */
+.doc-analysis-item {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767.98px) {
+    .hero-section {
+        padding: 50px 0;
+        text-align: center;
+    }
+
+    .hero-section img {
+        margin-top: 30px;
+        max-height: 250px !important;
+    }
+
+    .feature-icon {
+        margin: 0 auto 15px;
+    }
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(76, 175, 80, 0.2);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Tooltip Styling */
+.tooltip-inner {
+    background-color: var(--primary-dark);
+}
+
+.bs-tooltip-auto[data-popper-placement^=top] .tooltip-arrow::before, 
+.bs-tooltip-top .tooltip-arrow::before {
+    border-top-color: var(--primary-dark);
+}
+
+/* Alert Messages */
+.alert-success {
+    background-color: rgba(76, 175, 80, 0.1);
+    border-color: var(--primary-light);
+    color: var(--primary-dark);
+}
+
+.alert-info {
+    background-color: rgba(3, 169, 244, 0.1);
+    border-color: rgba(3, 169, 244, 0.5);
+    color: #0288D1;
+}
+
+/* Weed Remedies */
+.remedy-tabs .nav-link {
+    color: var(--text-medium);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    font-weight: 500;
+}
+
+.remedy-tabs .nav-link.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.remedy-content {
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: none;
+} 
